@@ -7,6 +7,8 @@ import { FilePreview } from '../components/FilePreview';
 import { executeToolApi, CompressionStats, fetchDocumentThumbnails, ThumbnailData } from '../services/api';
 import { ArrowLeft, Play, Settings2, AlertTriangle } from 'lucide-react';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+
 interface ToolExecutorProps {
   tool: ToolMetadata;
   onBack: () => void;
@@ -112,12 +114,12 @@ export const ToolExecutor: React.FC<ToolExecutorProps> = ({ tool, onBack }) => {
       } else if (tool.id === 'ocr') {
         formData.append('lang', ocrLang);
       } else if (tool.id === 'reorder-pdf') {
-        // Reverse order or sequential
         const orderArr = thumbnails.map((_, i) => thumbnails.length - 1 - i);
         formData.append('order', JSON.stringify(orderArr.length > 0 ? orderArr : [0]));
       }
 
-      const res = await executeToolApi(tool.endpoint, formData, (pct) => setProgress(pct));
+      const fullEndpoint = `${API_BASE}${tool.endpoint}`;
+      const res = await executeToolApi(fullEndpoint, formData, (pct) => setProgress(pct));
       setResultBlob(res.blob);
       setDownloadFilename(res.filename);
       setStats(res.stats);

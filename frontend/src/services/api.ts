@@ -89,11 +89,13 @@ export async function executeToolApi(
   });
 }
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+
 export async function fetchDocumentThumbnails(file: File): Promise<PreviewResponse> {
   const formData = new FormData();
   formData.append('file', file);
   
-  const response = await fetch('/api/preview/thumbnails', {
+  const response = await fetch(`${API_BASE}/api/preview/thumbnails`, {
     method: 'POST',
     body: formData
   });
