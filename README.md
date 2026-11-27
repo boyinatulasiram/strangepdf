@@ -1,111 +1,122 @@
-# STRANGEPDF 🔦⚡
+# 📻 ⚡ STRANGEPDF: THE HAWKINS NATIONAL LABORATORY DOSSIER 🚲🧇
 > *"PDFs Have Never Been This Strange."*  
 > *"Everything You Need for PDFs. Nothing Strange About It."*
 
-**StrangePDF** is an all-in-one, privacy-focused online PDF toolkit with a nostalgic 1980s supernatural sci-fi aesthetic. Convert, compress, edit, organize, secure, and inspect PDF documents through an intuitive web application — without mandatory registrations, third-party API exposure, or permanent document retention.
+---
+
+## 🔬 PROJECT CLASSIFICATION & OVERVIEW
+
+**StrangePDF** is a production-grade, privacy-first, all-in-one document processing portal disguised as a 1984 government research terminal. Built for everyday townspeople, researchers, and rogue agents alike, it eliminates bureaucratic software installations and mandatory registrations.
+
+Unlike conventional utilities that sacrifice identity for sterile corporate grayness, StrangePDF fuses modern high-performance document manipulation engines with the eerie, neon-lit, supernatural atmosphere of 1980s Hawkins, Indiana.
+
+### 📼 The Core Directive
+- **Free & Borderless Access**: Public frequency; no accounts, no registrations, no passwords demanded to operate.
+- **Relentless Utility**: 25+ military-grade document tools across Conversion, Organization, Optimization, Editing, Security, and OCR.
+- **The Zero-Retention Protocol**: What happens in the Upside Down stays in the Upside Down. Files are processed in isolated quarantine chambers and vaporized permanently upon extraction or timeout.
 
 ---
 
-## 🎨 Official Brand Identity & Palette
+## 🎨 THE HAWKINS LAB AESTHETIC PALETTE
 
-StrangePDF strictly uses the official 5-color Hawkins aesthetic:
-1. **Crimson Red (`#C33149`)**: Primary buttons, brand highlights, interactive elements.
-2. **Retro Lime (`#A8C256`)**: Success indicators, positive feedback, secondary accents.
-3. **Warm Cream (`#F3D9B1`)**: Main background, tool cards, light surfaces.
-4. **Vintage Tan (`#C29979`)**: Retro drop-shadows, borders, muted controls.
-5. **Deep Blood Red (`#A22522`)**: Headings, dark footer, dramatic sections.
+The visual interface is strictly calibrated to the authentic five-color 1984 surveillance spectrum:
 
----
+| Terminal Code | Designation | Role & Application |
+| :--- | :--- | :--- |
+| **`#C33149`** | **Crimson Red** | Core transmitters, primary triggers, warning beacons, and glowing neon conduits |
+| **`#A8C256`** | **Retro Lime** | Transmission success indicators, secondary triggers, green phosphor CRT readouts |
+| **`#F3D9B1`** | **Warm Cream** | Laboratory parchment, document workspace surfaces, retro beige microcomputer chassis |
+| **`#C29979`** | **Vintage Tan** | Molded plastic borders, 4px dropped shadow offsets, structural card divisions |
+| **`#A22522`** | **Deep Blood Red** | Heavy surveillance headers, the Void background, emergency notices, dark footer |
 
-## 🛠️ Complete Feature Matrix (25+ Tools Implemented)
-
-### Category A: PDF Conversion
-- **Word to PDF (`/api/convert/word-to-pdf`)**: Convert DOC and DOCX files into PDF with LibreOffice headless and python-docx fallback.
-- **PDF to Word (`/api/convert/pdf-to-word`)**: Convert PDF documents into editable Word DOCX files.
-- **JPG to PDF (`/api/convert/jpg-to-pdf`)**: Turn JPG, PNG, and WebP images into clean single or multi-page PDFs.
-- **PDF to JPG (`/api/convert/pdf-to-jpg`)**: Extract PDF pages as high-resolution JPG images (individual or ZIP download).
-- **Excel to PDF (`/api/convert/excel-to-pdf`)**: Convert XLS and XLSX spreadsheets into styled PDF tables.
-- **PDF to Excel (`/api/convert/pdf-to-excel`)**: Detect and extract document tables into editable Excel worksheets.
-- **PowerPoint to PDF (`/api/convert/powerpoint-to-pdf`)**: Convert PPT and PPTX presentation decks into PDF slides.
-- **PDF to PowerPoint (`/api/convert/pdf-to-powerpoint`)**: Convert PDF pages into presentation-ready slide decks.
-
-### Category B: PDF Organization
-- **Merge PDF (`/api/organize/merge`)**: Combine multiple PDF files in any order.
-- **Split PDF (`/api/organize/split`)**: Extract all pages separately or split by custom ranges (e.g. `1-3, 5, 7-10`).
-- **Rotate PDF (`/api/organize/rotate`)**: Rotate all or selected pages by 90°, 180°, or 270°.
-- **Reorder PDF (`/api/organize/reorder`)**: Drag and drop visual page order rearrangements.
-
-### Category C: PDF Optimization
-- **Compress PDF (`/api/optimization/compress`)**: Real file size optimization with 3 genuine levels (*Low*, *Recommended*, *Extreme*). Returns actual byte savings and exact percentages.
-- **Repair PDF (`/api/optimization/repair`)**: Reconstructs damaged xref tables and sanitizes corrupted streams.
-
-### Category D: PDF Editing
-- **Add Text (`/api/edit/add-text`)**: Insert custom text annotations with custom position, size, and hex color.
-- **Page Numbers (`/api/edit/page-numbers`)**: Add header/footer page numbers across custom formats.
-- **Watermark (`/api/edit/watermark`)**: Apply custom rotated text or image watermarks with opacity controls.
-- **Sign PDF (`/api/edit/sign`)**: Stamp visual signatures on any page at precise coordinates.
-
-### Category E: PDF Security
-- **Protect PDF (`/api/security/protect`)**: Encrypt PDF with standard AES encryption.
-- **Remove PDF Password (`/api/security/unlock`)**: Verify password and remove encryption.
-- **Change PDF Password (`/api/security/change-password`)**: Authenticate existing password and apply a new password.
-- **Remove PDF Restrictions (`/api/security/remove-restrictions`)**: Clear authorized printing/copying restrictions.
-
-### Category F: Additional Features
-- **OCR Text Scanner (`/api/ocr/extract-text`)**: Extract text layers from scanned PDFs with Tesseract OCR.
-- **Document Previews (`/api/preview/thumbnails`)**: Generates interactive low-res page previews on demand.
-- **Zero Permanent Storage**: Immediate background cleanup and automated periodic purging of expired files.
+Complementary sensory effects: Scanline CRT interlacing overlays, flickering vacuum tube button glows, physical drop-shadow button depressions, and vintage 1980s typography featuring *Bebas Neue*, *Space Grotesk*, and *Inter*.
 
 ---
 
-## 🔒 Security & Privacy Guarantees
+## 🏛️ HIGH-LEVEL ARCHITECTURAL DESIGN
+
+StrangePDF operates on a decoupled client-server architecture engineered to safeguard document integrity while guaranteeing complete privacy isolation.
+
+```mermaid
+flowchart TD
+    subgraph Client ["📺 HAWKINS TERMINAL (FRONTEND)"]
+        A["User File / Drag & Drop Portal"] --> B["Retro UI Controller / Framer Motion"]
+        B --> C["Client API Bridge (Axios/XHR + Progress)"]
+    end
+
+    subgraph Portal ["⚡ SECURE ENCRYPTED TLS CHANNEL"]
+        C <===> |Multipart Streams & X-Headers| D["FastAPI Dispatch Gatekeeper"]
+    end
+
+    subgraph UpsideDown ["🧪 THE SECURE LAB (BACKEND)"]
+        D --> E["UUID Quarantine Chamber (temp_uploads/)"]
+        E --> F{"Operation Router"}
+        
+        F --> G["Conversion Core<br/>(LibreOffice, pdf2docx, ReportLab)"]
+        F --> H["Organize Core<br/>(PyMuPDF / fitz, Pikepdf)"]
+        F --> I["Optimization Core<br/>(Deflate Engine, Xref Rebuilder)"]
+        F --> J["Editing & Signature Core<br/>(Stream Watermarking & Canvas)"]
+        F --> K["Security & Crypt Core<br/>(AES-256 Engine, Perms)"]
+        F --> L["OCR Vision Core<br/>(Tesseract Engine)"]
+
+        G & H & I & J & K & L --> M["Generated Output File"]
+        M --> N["Direct Stream Response with Disposition"]
+    end
+
+    subgraph DemogorgonCleaner ["🧹 PURGE DAEMON"]
+        O["Background Async Sweeper (Every 5 mins)"] -.->|Incinerate files > 30 mins| E
+        N -.->|Immediate Post-Download Purge| E
+    end
+
+    N ==> C
+```
+
+---
+
+## 🗄️ SUBSYSTEM BREAKDOWN
+
+### 1. The Client Transmission Deck (Frontend)
+- **Framework**: React 18 with TypeScript on Vite
+- **Styling**: Tailwind CSS with custom Hawkins palette extensions & retro hardbox shadows
+- **Atmospherics**: CSS CRT scanline matrices, neon glows, vintage status gauges
+- **Interactions**: Real-time upload progress telemetry, instant client-side thumbnail carousel previews, multi-page drag arrangements
+
+### 2. The Core Synthesis Engine (Backend)
+- **Framework**: Python 3.11 with FastAPI (Asynchronous REST Architecture)
+- **Conversion Subsystem**: Headless LibreOffice virtualization with Python-Docx / ReportLab fallbacks for DOCX, XLSX, PPTX, and image pipelines.
+- **Manipulation Subsystem**: High-velocity binary transformations via `PyMuPDF` (`fitz`) and `pikepdf` for sub-second merging, splitting, reordering, and angle rotation.
+- **Cryptographic Vault**: Native AES-128/256 cipher integration via `pypdf` for password locking, credential verification, and permission stripping.
+- **Optical Reader**: `pytesseract` integrated OCR parsing scanned textual artifacts from rasterized document pages.
+
+### 3. The Demogorgon Clean-Up Protocol (Privacy Architecture)
+- **Quarantine Isolation**: Each document job spawns a cryptographically randomized UUID directory on ephemeral storage.
+- **No Third-Party Intermediaries**: Documents never touch commercial external APIs or third-party cloud LLMs.
+- **Volatile Password Handling**: Passwords exist solely in ephemeral memory buffers during stream decryption and are strictly forbidden from logging systems.
+- **Dual-Phase Elimination**:
+  1. *Immediate Phase*: Fast background task executes `shutil.rmtree` upon file stream completion.
+  2. *Daemon Phase*: Standalone background async worker sweeps quarantine disks every 300 seconds to purge orphaned files exceeding lifespan.
+
+---
+
+## 🎛️ COMPLETE CAPABILITY INDEX (THE 25+ PROTOCOLS)
+
+- 📄 **Word to PDF & PDF to Word**: Bidirectional semantic document preservation.
+- 🖼️ **JPG to PDF & PDF to JPG**: High-fidelity image binding & multi-page raster extraction (ZIP packaged).
+- 📊 **Excel to PDF & PDF to Excel**: Tabular structured conversion and data sheet extraction.
+- 📽️ **PowerPoint to PDF & PDF to PowerPoint**: Presentation slide rendering and deck creation.
+- 🧬 **Merge, Split, Rotate & Reorder**: Structural document surgery with visual page verification.
+- 🗜️ **Compress PDF**: Real, mathematically calculated compression (*Low*, *Balanced*, *Extreme*) with zero synthetic metrics.
+- 🩺 **Repair PDF**: Xref structural rebuilding and stream sanitization for corrupt documents.
+- ✍️ **Add Text, Watermark, Page Numbers & Sign**: Visual stamping and custom annotations.
+- 🔐 **Protect, Unlock, Change Password & Remove Restrictions**: Military-grade document security.
+- 👁️ **OCR Scanner**: Optical character recognition turning scanned images into searchable text.
+
+---
+
+## 📡 BROADCAST TRANSMISSION NOTICE
 
 > *"Your documents are processed securely and are not permanently stored by StrangePDF. Temporary files are automatically deleted after processing and download."*
 
-1. **No External Conversion APIs**: All operations run inside our own backend server instances.
-2. **Zero Permanent Storage**: Files are saved only in isolated temporary job directories.
-3. **Automatic Cleanup**: Temporary files are deleted immediately after download and swept by a background worker every 5 minutes.
-4. **No Password Logging**: Document passwords are held in memory strictly during cipher execution and are never recorded.
-5. **No Mandatory Accounts**: No sign-up, email collection, or cookies required.
-
----
-
-## 🚀 Running Locally
-
-### Backend Setup
-```bash
-cd backend
-python -m venv venv
-
-# Windows:
-venv\Scripts\activate
-# Linux / macOS:
-source venv/bin/activate
-
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
-API Documentation will be live at `http://localhost:8000/docs`.
-
-### Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Open `http://localhost:5173` in your browser.
-
----
-
-## 🐳 Running with Docker
-```bash
-docker-compose up --build
-```
-Access the application at `http://localhost:5173`.
-
----
-
-## 🌐 Production Deployment
-
-- **Backend**: Ready for Render, Railway, or Fly.io using the root `Dockerfile`.
-- **Frontend**: Ready for Vercel, Netlify, or Cloudflare Pages (`cd frontend && npm run build`). Set `VITE_API_BASE_URL` to your live backend domain.
+<p align="center">
+  <b>HAWKINS, INDIANA • DIVISION OF PDF RESEARCH • 1984 - 2026</b>
+</p>
