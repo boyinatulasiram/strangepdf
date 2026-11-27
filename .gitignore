@@ -1,0 +1,19 @@
+# StrangePDF Git Ignore
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+temp_uploads/*
+!temp_uploads/.gitkeep
+test_sandbox/
+
+node_modules/
+dist/
+.vite/
+*.local
+.env
+.DS_Store
+Thumbs.db
