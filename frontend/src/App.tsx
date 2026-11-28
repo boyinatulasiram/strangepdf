@@ -41,17 +41,18 @@ export function App() {
       {/* Stranger Things "Upside Down" Drifting Spores / Ash Particle Simulation */}
       <Snowfall
         color="#C33149"
-        snowflakeCount={38}
-        radius={[0.7, 2.8]}
-        speed={[0.2, 0.7]}
-        wind={[-0.3, 0.5]}
+        snowflakeCount={85}
+        radius={[1.5, 4.0]}
+        speed={[0.6, 1.8]}
+        wind={[-0.5, 0.8]}
         style={{
           position: 'fixed',
+          top: 0,
+          left: 0,
           width: '100vw',
           height: '100vh',
-          zIndex: 35,
+          zIndex: 9999,
           pointerEvents: 'none',
-          opacity: 0.38,
         }}
       />
 
