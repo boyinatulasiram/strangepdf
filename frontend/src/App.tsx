@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Snowfall from 'react-snowfall';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
@@ -33,15 +34,32 @@ export function App() {
   const activeTool = TOOLS.find((t) => t.id === activeToolId) || TOOLS[0];
 
   return (
-    <div className="min-h-screen flex flex-col justify-between relative selection:bg-strange-crimson selection:text-strange-cream">
+    <div className="min-h-screen flex flex-col justify-between relative selection:bg-strange-crimson selection:text-strange-cream overflow-x-hidden">
       {/* CRT Scanline Retro Overlay */}
       <div className="fixed inset-0 scanlines pointer-events-none z-40 opacity-40" />
+
+      {/* Stranger Things "Upside Down" Drifting Spores / Ash Particle Simulation */}
+      <Snowfall
+        color="#C33149"
+        snowflakeCount={38}
+        radius={[0.7, 2.8]}
+        speed={[0.2, 0.7]}
+        wind={[-0.3, 0.5]}
+        style={{
+          position: 'fixed',
+          width: '100vw',
+          height: '100vh',
+          zIndex: 35,
+          pointerEvents: 'none',
+          opacity: 0.38,
+        }}
+      />
 
       {/* Navigation Header */}
       <Navbar currentView={currentView} onNavigate={handleNavigate} />
 
       {/* Main Content Body */}
-      <main className="flex-grow">
+      <main className="flex-grow relative z-10">
         {currentView === 'home' && (
           <Home onSelectTool={handleSelectTool} onNavigate={handleNavigate} />
         )}
