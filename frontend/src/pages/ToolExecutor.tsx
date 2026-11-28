@@ -45,15 +45,22 @@ export const ToolExecutor: React.FC<ToolExecutorProps> = ({ tool, onBack }) => {
   const [loadingPreview, setLoadingPreview] = useState(false);
 
   const handleFilesSelected = async (newFiles: File[]) => {
-    setFiles(newFiles);
+    let updatedFiles: File[];
+    if (tool.multipleFiles) {
+      // Append newly selected files to existing list to allow multiple browse/drop actions
+      updatedFiles = [...files, ...newFiles];
+    } else {
+      updatedFiles = newFiles.slice(0, 1);
+    }
+    setFiles(updatedFiles);
     setError(null);
     setResultBlob(null);
 
     // If PDF file and organization tool, load thumbnails
-    if (newFiles.length > 0 && newFiles[0].name.toLowerCase().endsWith('.pdf')) {
+    if (updatedFiles.length > 0 && updatedFiles[0].name.toLowerCase().endsWith('.pdf')) {
       try {
         setLoadingPreview(true);
-        const previewData = await fetchDocumentThumbnails(newFiles[0]);
+        const previewData = await fetchDocumentThumbnails(updatedFiles[0]);
         setThumbnails(previewData.thumbnails);
       } catch (e) {
         // Thumbnail preview optional fallback
@@ -378,10 +385,20 @@ export const ToolExecutor: React.FC<ToolExecutorProps> = ({ tool, onBack }) => {
 
               {/* Submit Execution Button */}
               <div className="pt-4">
+                {tool.id === 'merge-pdf' && files.length < 2 && (
+                  <p className="text-center text-strange-blood font-mono text-xs font-bold mb-2">
+                    ⚠️ Please add at least 2 PDF files to merge (Current: {files.length})
+                  </p>
+                )}
                 <button
                   type="button"
+                  disabled={tool.id === 'merge-pdf' && files.length < 2}
                   onClick={handleExecute}
-                  className="w-full py-4 bg-strange-crimson hover:bg-strange-blood text-strange-cream font-mono font-bold text-base rounded-lg border-2 border-strange-blood shadow-retro-crimson hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all flex items-center justify-center gap-3"
+                  className={`w-full py-4 text-strange-cream font-mono font-bold text-base rounded-lg border-2 border-strange-blood transition-all flex items-center justify-center gap-3 ${
+                    tool.id === 'merge-pdf' && files.length < 2
+                      ? 'bg-strange-tan/50 cursor-not-allowed opacity-60'
+                      : 'bg-strange-crimson hover:bg-strange-blood shadow-retro-crimson hover:shadow-none hover:translate-x-1 hover:translate-y-1'
+                  }`}
                 >
                   <Play className="w-5 h-5 fill-current" />
                   <span>PROCESS {tool.name.toUpperCase()}</span>
